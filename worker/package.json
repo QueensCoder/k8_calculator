@@ -1,0 +1,17 @@
+{
+  "name": "fibo_calc",
+  "version": "1.0.0",
+  "description": "fibonacci sequence calculator using docker containers for seperate processes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon"
+  },
+  "author": "Queens Coder",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^1.19.4",
+    "redis": "^2.8.0"
+  }
+}
