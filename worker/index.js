@@ -1,4 +1,4 @@
-const { redisHost: host, redisPort: port } = require('./keys');
+const { host, port } = require('./keys');
 const { redisClient } = require('redis');
 
 // eslint-disable-next-line camelcase
