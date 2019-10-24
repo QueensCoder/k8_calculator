@@ -1,5 +1,5 @@
 const { Pool } = require('pg');
-const redis = require('redis');
+const { createClient } = require('redis');
 const {
   database,
   host,
@@ -23,7 +23,7 @@ pgClient
   .query('CREATE TABLE IF NOT EXISTS values (number INT)')
   .catch(err => console.log(err));
 
-const redisClient = redis.RedisClient({
+const redisClient = createClient({
   host: redisHost,
   port: redisPort,
   // eslint-disable-next-line camelcase
