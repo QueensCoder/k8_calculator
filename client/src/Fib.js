@@ -53,6 +53,7 @@ class Fib extends Component {
   }
 
   render() {
+    console.log('can you see me inside of render fib comp');
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
