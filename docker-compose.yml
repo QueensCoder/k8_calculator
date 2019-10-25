@@ -1,17 +1,41 @@
 version: '3'
 services:
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - '3050:80'
+  # postgres container
   postgres:
     image: 'postgres:latest'
+  # redis container
   redis:
     image: 'redis:latest'
-  server:
+    # server container
+  api:
     build:
       dockerfile: 'Dockerfile.dev'
       context: ./server
+    volumes:
+      - app/node_modules
+      - ./server:/app
+    # env keys to connect to redis and postgres
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - PGHOST=postgres
+      - PGUSER=postgres
+      - PGDATABASE=postgres
+      - PGPASSWORD=postgres_password
+      - PGPORT=5432
+      # worker
   worker:
     build:
       dockerfile: 'Dockerfile.dev'
       context: ./worker
+      # client
   client:
     build:
       dockerfile: 'Dockerfile.dev'
