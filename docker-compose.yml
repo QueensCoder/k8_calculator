@@ -31,6 +31,8 @@ services:
       - PGPASSWORD=postgres_password
       - PGPORT=5432
       # worker
+    depends_on:
+      - postgres
   worker:
     build:
       dockerfile: 'Dockerfile.dev'
@@ -40,3 +42,6 @@ services:
     build:
       dockerfile: 'Dockerfile.dev'
       context: ./client
+    volumes:
+      - app/node_modules
+      - ./client:/app
