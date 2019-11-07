@@ -1,0 +1,20 @@
+# todo add another test for express for travis cli
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t ozkhan/client-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true ozkhan/client-test npm test
+
+after_sucess:
+  - docker build -t ozkhan/multi-client -f ./client
+  - docker build -t ozkhan/multi-nginx -f ./nginx
+  - docker build -t ozkhan/multi-server -f ./server
+  - docker build -t ozkhan/multi-worker -f ./worker
+
+  # login into  dpocker cli
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID"
