@@ -26,13 +26,11 @@ class Fib extends Component {
   }
 
   handleSubmit = async event => {
-    console.log('got clicked');
     event.preventDefault();
 
     await axios.post('/api/values', {
       index: this.state.index
     });
-    console.log('did thos run after the axios post');
     this.setState({ index: '' });
   };
 
@@ -55,7 +53,6 @@ class Fib extends Component {
   }
 
   render() {
-    console.log('can you see me inside of render fib comp');
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
