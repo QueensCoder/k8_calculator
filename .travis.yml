@@ -5,15 +5,16 @@ services:
 
 before_install:
   - docker build -t ozkhan/client-test -f ./client/Dockerfile.dev ./client
+  # todo add tests to server and worker
 
 script:
   - docker run -e CI=true ozkhan/client-test npm test
 
 after_sucess:
-  - docker build -t ozkhan/multi-client -f ./client
-  - docker build -t ozkhan/multi-nginx -f ./nginx
-  - docker build -t ozkhan/multi-server -f ./server
-  - docker build -t ozkhan/multi-worker -f ./worker
+  - docker build -t ozkhan/multi-client ./client
+  - docker build -t ozkhan/multi-nginx ./nginx
+  - docker build -t ozkhan/multi-server ./server
+  - docker build -t ozkhan/multi-worker ./worker
 
   # login into  dpocker cli
   # echo out docker password which is a env var then login with docker id n pass
