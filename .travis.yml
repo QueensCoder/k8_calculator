@@ -8,8 +8,10 @@ before_install:
   # todo add tests to server and worker
 
 script:
-  - docker run -e CI=true ozkhan/client-test npm test
+  - docker run stephengrider/react-test npm test -- --coverage
+  # - docker run -e CI=true ozkhan/client-test npm test
 
+# does not run???
 after_sucess:
   - docker build -t ozkhan/multi-client ./client
   - docker build -t ozkhan/multi-nginx ./nginx
