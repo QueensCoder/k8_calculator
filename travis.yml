@@ -16,5 +16,10 @@ after_sucess:
   - docker build -t ozkhan/multi-worker -f ./worker
 
   # login into  dpocker cli
-
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID"
+  # echo out docker password which is a env var then login with docker id n pass
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # take the built images above and pass them to docker hub
+  - docker push ozkhan/multi-client
+  - docker push ozkhan/multi-nginx
+  - docker push ozkhan/multi-server
+  - docker push ozkhan/multi-worker
