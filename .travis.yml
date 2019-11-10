@@ -19,13 +19,13 @@ after_success:
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push ozkhan/multi-client
+  - docker push ozkhan/multi-client #multi client did not push to docker?>??
   - docker push ozkhan/multi-nginx
   - docker push ozkhan/multi-server
   - docker push ozkhan/multi-worker
   #
 # does not run???
-# after_sucess:
+# after_sucess: #typo caused silent error .... why???
 #   - docker build -t ozkhan/multi-client ./client
 #   - docker build -t ozkhan/multi-nginx ./nginx
 #   - docker build -t ozkhan/multi-server ./server
