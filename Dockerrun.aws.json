@@ -29,6 +29,7 @@
           "containerPort": 80
         }
       ],
+      //   link nginx to client and server with a one way link
       "links": ["client", "server"]
     }
   ]

@@ -23,19 +23,15 @@ after_success:
   - docker push ozkhan/multi-nginx
   - docker push ozkhan/multi-server
   - docker push ozkhan/multi-worker
-  #
-# does not run???
-# after_sucess: #typo caused silent error .... why???
-#   - docker build -t ozkhan/multi-client ./client
-#   - docker build -t ozkhan/multi-nginx ./nginx
-#   - docker build -t ozkhan/multi-server ./server
-#   - docker build -t ozkhan/multi-worker ./worker
 
-#   # login into  dpocker cli
-#   # echo out docker password which is a env var then login with docker id n pass
-#   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-#   # take the built images above and pass them to docker hub
-#   - docker push ozkhan/multi-client
-#   - docker push ozkhan/multi-nginx
-#   - docker push ozkhan/multi-server
-#   - docker push ozkhan/multi-worker
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "mult-docker"
+  env: "MultiDocker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-415095052881"
+  bucket_path: "docker-multi"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
