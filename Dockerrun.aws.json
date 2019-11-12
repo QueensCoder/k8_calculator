@@ -16,7 +16,6 @@
     {
       "name": "worker",
       "image": "ozkhan/multi-worker",
-      //host name is not required because nothing needs to talk to worker
       "essential": false
     },
     {
@@ -29,7 +28,6 @@
           "containerPort": 80
         }
       ],
-      //   link nginx to client and server with a one way link
       "links": ["client", "server"]
     }
   ]
