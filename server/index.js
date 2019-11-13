@@ -42,11 +42,14 @@ app.get("/", (req, res) => {
 app.get("/values/all", async (req, res, next) => {
   try {
     const values = await pgClient.query("SELECT * from values");
-    console.log("look here <<><><><><><><><><><><><><><><><><><>");
     res.send(values.rows);
   } catch (err) {
     next(err);
   }
+});
+
+app.get("/new", (req, res) => {
+  res.send("hit new route ");
 });
 
 app.get("/values/current", async (req, res, next) => {
