@@ -1,9 +1,9 @@
-version: '3'
+version: "3"
 services:
   postgres:
-    image: 'postgres:latest'
+    image: "postgres:latest"
   redis:
-    image: 'redis:latest'
+    image: "redis:latest"
   nginx:
     depends_on:
       - api
@@ -13,7 +13,7 @@ services:
       dockerfile: Dockerfile.dev
       context: ./nginx
     ports:
-      - '8080:80'
+      - "3050:80"
   api:
     depends_on:
       - postgres
