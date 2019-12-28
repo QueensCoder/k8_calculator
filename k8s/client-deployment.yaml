@@ -11,9 +11,9 @@ spec:
     metadata:
       labels:
         component: web
-      spec:
-        containers:
-          - name: client
-            image: ozkhan/multi-client
-            ports:
-              - containerPort: 3000
+    spec:
+      containers:
+        - name: client
+          image: ozkhan/multi-client
+          ports:
+            - containerPort: 3000
