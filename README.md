@@ -197,3 +197,12 @@ Scroll to Environment Variables
 Add AWS_ACCESS_KEY and set to your AWS access key
 
 Add AWS_SECRET_KEY and set to your AWS secret key
+
+---
+
+kubectl notes
+
+kubctl create secret generic <name> --from-literal key=value
+.... imperative command that allows us to create an obj without a config file
+
+secrets are object used for hiding info ex api keys, hide the db that you are using
