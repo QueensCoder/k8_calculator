@@ -205,4 +205,7 @@ kubectl notes
 kubctl create secret generic <name> --from-literal key=value
 .... imperative command that allows us to create an obj without a config file
 
+ex: - kubectl create secret generic pgpassword --from-literal PGPASSWORD=1234
 secrets are object used for hiding info ex api keys, hide the db that you are using
+
+minikube dashboard - to get info on deployments
